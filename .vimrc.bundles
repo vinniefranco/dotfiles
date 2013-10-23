@@ -1,0 +1,83 @@
+" Environment {
+    " Basics {
+        set nocompatible        " must be first line
+    " }
+    "
+    " Setup Bundle Support {
+    " The next three lines ensure that the ~/.vim/bundle/ system works
+        filetype off
+        set rtp+=~/.vim/bundle/vundle
+        call vundle#rc()
+    " }
+
+" }
+
+" Bundles {
+    " Deps
+        Bundle 'gmarik/vundle'
+        Bundle 'MarcWeber/vim-addon-mw-utils'
+        Bundle 'tomtom/tlib_vim'
+        if executable('ack-grep')
+            let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+            Bundle 'mileszs/ack.vim'
+        elseif executable('ack')
+            Bundle 'mileszs/ack.vim'
+        endif
+
+    " }
+
+    " General
+      Bundle 'scrooloose/nerdtree'
+      Bundle 'spf13/vim-colors'
+      Bundle 'tpope/vim-surround'
+      Bundle 'AutoClose'
+      Bundle 'unite.vim'
+      Bundle 'matchit.zip'
+      Bundle 'Lokaltog/vim-easymotion'
+      Bundle 'jistr/vim-nerdtree-tabs'
+      Bundle 'flazz/vim-colorschemes'
+      Bundle 'corntrace/bufexplorer'
+      Bundle 'mbbill/undotree'
+      Bundle 'myusuf3/numbers.vim'
+      Bundle 'ctrlp.vim'
+      Bundle 'junegunn/seoul256.vim'
+
+    " General Programming
+      Bundle 'scrooloose/syntastic'
+      Bundle 'tpope/vim-fugitive'
+      Bundle 'scrooloose/nerdcommenter'
+      Bundle 'godlygeek/tabular'
+
+    " PHP
+      Bundle 'php.vim'
+
+    " Python
+      Bundle 'klen/python-mode'
+      Bundle 'python.vim'
+      Bundle 'python_match.vim'
+      Bundle 'pythoncomplete'
+
+    " Javascript
+      Bundle 'leshill/vim-json'
+      Bundle 'groenewege/vim-less'
+      Bundle 'taxilian/vim-web-indent'
+
+    " HTML
+      Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+
+    " Ruby
+      Bundle 'tpope/vim-rails'
+      let g:rubycomplete_buffer_loading = 1
+
+    " Misc
+      Bundle 'bling/vim-airline'
+      Bundle 'EasyGrep'
+      Bundle 'tpope/vim-markdown'
+      Bundle 'Puppet-Syntax-Highlighting'
+      Bundle 'c.vim'
+      Bundle 'kchmck/vim-coffee-script'
+      Bundle 'jade.vim'
+      Bundle 'vimgdb'
+      Bundle 'UltiSnips'
+      Bundle 'ZenCoding.vim'
+" }
