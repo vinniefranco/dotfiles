@@ -342,6 +342,13 @@
     set laststatus=2
   " }
 
+  " vim-rspec Mappings {
+    let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
+    map <Leader>t :call RunCurrentSpecFile()<CR>
+    map <Leader>s :call RunNearestSpec()<CR>
+    map <Leader>l :call RunLastSpec()<CR>
+    map <Leader>a :call RunAllSpecs()<CR>
+  " }
 " }
 
 
@@ -395,8 +402,8 @@ endfunction
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-set wildignore+=*/doc/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.map
+set wildignore+=*/doc/*,*/public/assets/*
 
 
 " ctrl.p like usage of Unite.vim
@@ -436,8 +443,9 @@ endfunction
 :command! -complete=dir -nargs=* Ff call GFind(<f-args>)
 
 " And finally. Make it pretty.
+set ttyfast
 set t_Co=256
 set background=dark
 let g:seoul256_background = 234
-colorscheme seoul256
+colorscheme Tomorrow-Night
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
