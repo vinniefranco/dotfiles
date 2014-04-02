@@ -5,6 +5,7 @@
   " Setup Bundle Support {
   filetype on
   filetype off
+  set lazyredraw
   set rtp+=~/.vim/bundle/vundle
   call vundle#rc()
 " }
@@ -401,6 +402,11 @@ endfunction
 " Ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_reuse_window='startify'
+let g:ctrlp_extensions=['funky']
+if executable('ag')
+  let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+endif
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.map
 set wildignore+=*/doc/*,*/public/assets/*
@@ -417,6 +423,8 @@ let g:unite_source_history_yank_enable=1
 let g:unite_source_file_rec_max_cache_files=5000
 let g:unite_prompt='» '
 if executable('ag')
+  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+  set grepformat=%f:%l:%c:%m
   let g:unite_source_grep_command='ag'
   let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
   let g:unite_source_grep_recursive_opt=''
@@ -428,6 +436,10 @@ endif
 
 " LustyJuggler buffer switching
 nnoremap <space>s :Unite -quick-match buffer<cr>
+
+" Ack.vim like searching
+nnoremap <space>f :Unite grep:.<cr>
+let g:agprg="/usr/local/bin/ag --column"
 
 "Simpler vimgrep.
 "Usage  ':Gf <REGEX> <DIRECTORY_SCOPE(OPTIONAL)> <FILE_EXT(OPTIONAL)>'
@@ -448,4 +460,4 @@ set t_Co=256
 set background=dark
 let g:seoul256_background = 234
 colorscheme Tomorrow-Night
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+set guifont=Envy\ Code\ R\ for\ Powerline:h12

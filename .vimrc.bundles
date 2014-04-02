@@ -14,72 +14,76 @@
 
 " Bundles {
     " Deps
-        Bundle 'gmarik/vundle'
-        Bundle 'MarcWeber/vim-addon-mw-utils'
-        Bundle 'tomtom/tlib_vim'
-        if executable('ack-grep')
+        Bundle "gmarik/vundle"
+        Bundle "MarcWeber/vim-addon-mw-utils"
+        Bundle "tomtom/tlib_vim"
+        if executable("ack-grep")
             let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-            Bundle 'mileszs/ack.vim'
-        elseif executable('ack')
-            Bundle 'mileszs/ack.vim'
+            Bundle "mileszs/ack.vim"
+        elseif executable("ack")
+            Bundle "mileszs/ack.vim"
         endif
 
     " }
 
     " General
-      Bundle 'scrooloose/nerdtree'
-      Bundle 'spf13/vim-colors'
-      Bundle 'tpope/vim-surround'
-      Bundle 'AutoClose'
-      Bundle 'unite.vim'
-      Bundle 'matchit.zip'
-      Bundle 'Lokaltog/vim-easymotion'
-      Bundle 'jistr/vim-nerdtree-tabs'
-      Bundle 'flazz/vim-colorschemes'
-      Bundle 'corntrace/bufexplorer'
-      Bundle 'mbbill/undotree'
-      Bundle 'myusuf3/numbers.vim'
-      Bundle 'ctrlp.vim'
-      Bundle 'junegunn/seoul256.vim'
+      Bundle "scrooloose/nerdtree"
+      Bundle "spf13/vim-colors"
+      Bundle "tpope/vim-surround"
+      Bundle "AutoClose"
+      Bundle "unite.vim"
+      Bundle "matchit.zip"
+      Bundle "Lokaltog/vim-easymotion"
+      Bundle "jistr/vim-nerdtree-tabs"
+      Bundle "flazz/vim-colorschemes"
+      Bundle "corntrace/bufexplorer"
+      Bundle "mbbill/undotree"
+      Bundle "myusuf3/numbers.vim"
+      Bundle "ctrlp.vim"
+      Bundle "junegunn/seoul256.vim"
 
     " General Programming
-      Bundle 'scrooloose/syntastic'
-      Bundle 'tpope/vim-fugitive'
-      Bundle 'scrooloose/nerdcommenter'
-      Bundle 'godlygeek/tabular'
+      Bundle "scrooloose/syntastic"
+      Bundle "tpope/vim-fugitive"
+      Bundle "scrooloose/nerdcommenter"
+      Bundle "godlygeek/tabular"
+      Bundle "JuliaLang/julia-vim"
 
     " PHP
-      Bundle 'php.vim'
+      Bundle "php.vim"
 
     " Python
-      Bundle 'klen/python-mode'
-      Bundle 'python.vim'
-      Bundle 'python_match.vim'
-      Bundle 'pythoncomplete'
+      Bundle "klen/python-mode"
+      Bundle "python.vim"
+      Bundle "python_match.vim"
+      Bundle "pythoncomplete"
 
     " Javascript
-      Bundle 'leshill/vim-json'
-      Bundle 'groenewege/vim-less'
-      Bundle 'taxilian/vim-web-indent'
+      Bundle "leshill/vim-json"
+      Bundle "groenewege/vim-less"
+      Bundle "taxilian/vim-web-indent"
+
+      Bundle "javacomplete"
 
     " HTML
-      Bundle 'ChrisYip/Better-CSS-Syntax-for-Vim'
+      Bundle "ChrisYip/Better-CSS-Syntax-for-Vim"
 
     " Ruby
-      Bundle 'tpope/vim-rails'
-      Bundle 'thoughtbot/vim-rspec'
-      Bundle 'jgdavey/tslime.vim'
+      Bundle "tpope/vim-rails"
+      Bundle "thoughtbot/vim-rspec"
+      Bundle "jgdavey/tslime.vim"
       let g:rubycomplete_buffer_loading = 1
 
     " Misc
-      Bundle 'bling/vim-airline'
-      Bundle 'EasyGrep'
-      Bundle 'tpope/vim-markdown'
-      Bundle 'Puppet-Syntax-Highlighting'
-      Bundle 'c.vim'
-      Bundle 'kchmck/vim-coffee-script'
-      Bundle 'jade.vim'
-      Bundle 'vimgdb'
-      Bundle 'UltiSnips'
-      Bundle 'ZenCoding.vim'
+      Bundle "bling/vim-airline"
+      Bundle "EasyGrep"
+      Bundle "tpope/vim-markdown"
+      Bundle "Puppet-Syntax-Highlighting"
+      Bundle "c.vim"
+      Bundle "kchmck/vim-coffee-script"
+      Bundle "jade.vim"
+      Bundle "vimgdb"
+      Bundle "UltiSnips"
+      Bundle "mattn/emmet-vim"
+      Bundle "rking/ag.vim"
 " }
