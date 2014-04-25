@@ -47,7 +47,6 @@
       Bundle "tpope/vim-fugitive"
       Bundle "scrooloose/nerdcommenter"
       Bundle "godlygeek/tabular"
-      Bundle "JuliaLang/julia-vim"
 
     " PHP
       Bundle "php.vim"
@@ -73,6 +72,9 @@
       Bundle "thoughtbot/vim-rspec"
       Bundle "jgdavey/tslime.vim"
       let g:rubycomplete_buffer_loading = 1
+
+    " Nimrod
+      Bundle 'zah/nimrod.vim'
 
     " Misc
       Bundle "bling/vim-airline"

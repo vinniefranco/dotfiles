@@ -10,6 +10,7 @@ ZSH_THEME="robbyrussell"
 # Example aliases
 alias v="mvim -v"
 alias js="rhino"
+alias nim="/usr/local/Cellar/nimrod/0.9.2/libexec/bin/nimrod"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
