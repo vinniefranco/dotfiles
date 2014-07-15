@@ -1,13 +1,8 @@
 
 " Environment {
   set nocompatible        " must be first line
-
-  " Setup Bundle Support {
-  filetype on
-  filetype off
-  set lazyredraw
-  set rtp+=~/.vim/bundle/vundle
-  call vundle#rc()
+  set lazyredraw          " adds some needed speed in iTerm2
+  set noautochdir
 " }
 
 " Bundles {
@@ -81,8 +76,6 @@
 
 " Key (re)Mappings {
 
-  "The default leader is '\', but many people prefer ',' as it's in a standard
-  "location
   let mapleader = ','
 
   " Easier moving in tabs and windows
@@ -97,7 +90,6 @@
 
   " The following two lines conflict with moving to top and bottom of the
   " screen
-  " If you prefer that functionality, comment them out.
   map <S-H> gT
   map <S-L> gt
 
@@ -131,19 +123,12 @@
   " Break comma delimited strings to newline at cursor
   nmap <silent> <leader>br :s/, /\=",\r " . substitute(substitute(getline('.'), " :.*$", "", "g"), ".", " ", "g")/g<CR>
 
-  "clearing highlighted search
+  " clearing highlighted search
   nmap <silent> <leader>/ :nohlsearch<CR>
 
   " visual shifting (does not exit Visual mode)
   vnoremap < <gv
   vnoremap > >gv
-
-  " Fix home and end keybindings for screen, particularly on mac
-  " - for some reason this fixes the arrow keys too. huh.
-  "map [F $
-  "imap [F $
-  "map [H g0
-  "imap [H g0
 
   " For when you forget to sudo.. Really Write the file.
   cmap w!! w !sudo tee % >/dev/null
@@ -425,31 +410,11 @@ if executable('ag')
   let g:unite_source_grep_command='ag'
   let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
   let g:unite_source_grep_recursive_opt=''
-elseif executable('ack')
-  let g:unite_source_grep_command='ack'
-  let g:unite_source_grep_default_opts='--no-heading --no-color -a'
-  let g:unite_source_grep_recursive_opt=''
 endif
-
-" LustyJuggler buffer switching
-nnoremap <space>s :Unite -quick-match buffer<cr>
 
 " Ack.vim like searching
 nnoremap <space>f :Unite grep:.<cr>
 let g:agprg="/usr/local/bin/ag --column"
-
-"Simpler vimgrep.
-"Usage  ':Gf <REGEX> <DIRECTORY_SCOPE(OPTIONAL)> <FILE_EXT(OPTIONAL)>'
-function! GFind(...)
-  let regEx = a:1 . 'gj'
-  let dir   = a:0 >= 2 ? a:2 : './'
-  let ext   = a:0 >= 3 ? a:3 : 'php'
-
-  execute(':noautocmd vimgrep ' . regEx . ' ' . dir . '**/*.' .ext)
-  execute(':cw')
-endfunction
-
-:command! -complete=dir -nargs=* Ff call GFind(<f-args>)
 
 " And finally. Make it pretty.
 set ttyfast
@@ -459,4 +424,3 @@ let g:seoul256_background = 234
 colorscheme Tomorrow-Night
 set guifont=Envy\ Code\ R\ for\ Powerline:h12
 let g:ctrlp_working_path=0
-set noautochdir
