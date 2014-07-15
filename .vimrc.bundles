@@ -19,10 +19,8 @@
         Bundle "tomtom/tlib_vim"
         if executable("ack-grep")
             let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-            Bundle "mileszs/ack.vim"
-        elseif executable("ack")
-            Bundle "mileszs/ack.vim"
         endif
+        Bundle "mileszs/ack.vim"
 
     " }
 
@@ -34,22 +32,20 @@
       Bundle "unite.vim"
       Bundle "matchit.zip"
       Bundle "Lokaltog/vim-easymotion"
-      Bundle "jistr/vim-nerdtree-tabs"
       Bundle "flazz/vim-colorschemes"
       Bundle "corntrace/bufexplorer"
       Bundle "mbbill/undotree"
       Bundle "myusuf3/numbers.vim"
       Bundle "ctrlp.vim"
       Bundle "junegunn/seoul256.vim"
+      Bundle "tpope/vim-dispatch"
+      Bundle 'christoomey/vim-tmux-navigator'
 
     " General Programming
       Bundle "scrooloose/syntastic"
       Bundle "tpope/vim-fugitive"
       Bundle "scrooloose/nerdcommenter"
       Bundle "godlygeek/tabular"
-
-    " PHP
-      Bundle "php.vim"
 
     " Python
       Bundle "klen/python-mode"
@@ -61,7 +57,6 @@
       Bundle "leshill/vim-json"
       Bundle "groenewege/vim-less"
       Bundle "taxilian/vim-web-indent"
-
       Bundle "javacomplete"
 
     " HTML
@@ -71,10 +66,8 @@
       Bundle "tpope/vim-rails"
       Bundle "thoughtbot/vim-rspec"
       Bundle "jgdavey/tslime.vim"
+      Bundle "slim-template/vim-slim.git"
       let g:rubycomplete_buffer_loading = 1
-
-    " Nimrod
-      Bundle 'zah/nimrod.vim'
 
     " Misc
       Bundle "bling/vim-airline"

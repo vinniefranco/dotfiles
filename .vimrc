@@ -23,8 +23,6 @@
   set mouse=a                 " automatically enable mouse usage
   set encoding=utf-8
   scriptencoding utf-8
-  autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-  " always switch to the current file directory.
 
   set viewoptions=folds,options,cursor,unix,slash " better unix / windows compatibility
   set virtualedit=onemore         " allow for cursor beyond last character
@@ -56,7 +54,6 @@
   set scrolljump=5                " lines to scroll when cursor leaves screen
   set scrolloff=3                 " minimum lines to keep above and below cursor
   set list
-  set listchars=tab:,.,trail:.,extends:#,nbsp:. " Highlight problematic whitespace
 
 " }
 
@@ -74,7 +71,6 @@
   autocmd BufNewFile,BufRead *.jst.ejs set filetype=html
   au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,*.json_builder,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
   " Special definitions
-  autocmd FileType php setlocal shiftwidth=2 tabstop=2 noexpandtab
   autocmd FileType html setlocal shiftwidth=4 tabstop=4 noexpandtab
 
   set notimeout      " timeout on mappings and key bindings"
@@ -123,6 +119,12 @@
   " Yank from the cursor to the end of the line, to be consistent with C and D.
   nnoremap Y y$
 
+  " http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
+  nmap <F1> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+  imap <F1> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+  nmap <F2> :.w !pbcopy<CR><CR>
+  vmap <F2> :w !pbcopy<CR><CR>
+
   " Quickly turn a string back to = into an array
   nmap <silent> <leader>ta vF=l<Esc>:s/\%V\S\+/"&",/g<CR>A<BS><Esc>vF=2lgS[JJ:let @/ = ""<CR>
 
@@ -132,21 +134,16 @@
   "clearing highlighted search
   nmap <silent> <leader>/ :nohlsearch<CR>
 
-  " Shortcuts
-  " Change Working Directory to that of the current file
-  cmap cwd lcd %:p:h
-  cmap cd. lcd %:p:h
-
   " visual shifting (does not exit Visual mode)
   vnoremap < <gv
   vnoremap > >gv
 
   " Fix home and end keybindings for screen, particularly on mac
   " - for some reason this fixes the arrow keys too. huh.
-  map [F $
-  imap [F $
-  map [H g0
-  imap [H g0
+  "map [F $
+  "imap [F $
+  "map [H g0
+  "imap [H g0
 
   " For when you forget to sudo.. Really Write the file.
   cmap w!! w !sudo tee % >/dev/null
@@ -188,7 +185,7 @@
 
     let NERDTreeShowBookmarks=1
     let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-    let NERDTreeChDirMode=0
+    let g:NERDTreeChDirMode=0
     let NERDTreeQuitOnOpen=1
     let NERDTreeShowHidden=1
     let NERDTreeKeepTreeInNewTab=1
@@ -295,10 +292,15 @@
     inoremap <expr><C-y>  neocomplcache#close_popup()
 
     " Make splits a bit more managable.
-    nnoremap <C-Left> :vs<CR><C-w>l
-    nnoremap <C-Right> :split<CR><C-w>j
+    nnoremap <leader>1 :vs<CR><C-w>l
+    nnoremap <leader>2 :split<CR><C-w>j
     nnoremap <C-Up> :bn<CR>
     nnoremap <C-Down> :bp<CR>
+    nmap <silent> <A-k> :wincmd k<CR>
+    nmap <silent> <A-j> :wincmd j<CR>
+    nmap <silent> <A-h> :wincmd h<CR>
+    nmap <silent> <A-l> :wincmd l<CR>
+
     vmap <Left> <gv
     vmap <Right> >gv
 
@@ -315,7 +317,6 @@
       let g:neocomplcache_omni_patterns = {}
     endif
     let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w*::'
-    let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
     let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
     let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
@@ -340,11 +341,12 @@
   " Airline {
     let g:syntastic_ignore_files=['\.html$', '\c\.h$', '\.css$']
     let g:airline_powerline_fonts=1
+    let g:airline#extensions#tabline#fnamecollapse=1
     set laststatus=2
   " }
 
   " vim-rspec Mappings {
-    let g:rspec_command = 'call Send_to_Tmux("spring rspec {spec}\n")'
+    let g:rspec_command = "Dispatch spring rspec -I . {spec}"
     map <Leader>t :call RunCurrentSpecFile()<CR>
     map <Leader>s :call RunNearestSpec()<CR>
     map <Leader>l :call RunLastSpec()<CR>
@@ -407,15 +409,10 @@ let g:ctrlp_extensions=['funky']
 if executable('ag')
   let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
 endif
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_switch_buffer=0
+let g:ctrlp_working_path_mode=0
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.map
 set wildignore+=*/doc/*,*/public/assets/*
-
-
-" ctrl.p like usage of Unite.vim
-""call unite#filters#matcher_default#use(['matcher_fuzzy'])
-""call unite#filters#sorter_default#use(['sorter_rank'])
-""call unite#set_profile('files', 'smartcase', 1)
 
 let g:unite_data_directory='~/.vim/.cache/unite'
 let g:unite_enable_start_insert=1
@@ -461,3 +458,5 @@ set background=dark
 let g:seoul256_background = 234
 colorscheme Tomorrow-Night
 set guifont=Envy\ Code\ R\ for\ Powerline:h12
+let g:ctrlp_working_path=0
+set noautochdir
