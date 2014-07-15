@@ -7,7 +7,7 @@
 ###   ##   #  #    ### #### #### ####
 
 DIR=~/.dotfiles
-FILES="powconfig tmux.conf valgrindrc vimrc vimrc.bundles zshrc"
+FILES="powconfig tmux.conf vimrc vimrc.bundles zshrc"
 
 echo -n "Updating previous symlinks"
 
