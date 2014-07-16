@@ -64,7 +64,7 @@
   " Remove trailing whitespaces and ^M chars
   autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
   autocmd BufNewFile,BufRead *.jst.ejs set filetype=html
-  au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,*.json_builder,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
+ 
   " Special definitions
   autocmd FileType html setlocal shiftwidth=4 tabstop=4 noexpandtab
 
@@ -84,6 +84,11 @@
   map <C-L> <C-W>l<C-W>_
   map <C-H> <C-W>h<C-W>_
 
+  map [F $
+  imap [F $
+  map [H g0
+  imap [H g0
+
   " Wrapped lines goes down/up to next row, rather than next line in file.
   nnoremap j gj
   nnoremap k gk
@@ -95,7 +100,6 @@
 
   " Stupid shift key fixes
   if has("user_commands")
-    command! -bang -nargs=* -complete=file E e<bang> <args>
     command! -bang -nargs=* -complete=file W w<bang> <args>
     command! -bang -nargs=* -complete=file Wq wq<bang> <args>
     command! -bang -nargs=* -complete=file WQ wq<bang> <args>
@@ -119,6 +123,9 @@
 
   " Quickly turn a string back to = into an array
   nmap <silent> <leader>ta vF=l<Esc>:s/\%V\S\+/"&",/g<CR>A<BS><Esc>vF=2lgS[JJ:let @/ = ""<CR>
+
+  " Open the file explorer
+  nmap <silent> <leader>e :e.<CR>
 
   " Break comma delimited strings to newline at cursor
   nmap <silent> <leader>br :s/, /\=",\r " . substitute(substitute(getline('.'), " :.*$", "", "g"), ".", " ", "g")/g<CR>
@@ -147,13 +154,11 @@
   " Easier horizontal scrolling
   map zl zL
   map zh zH
-" }
 
 " Plugins {
 
 
   " Misc {
-    let g:NERDShutUp=1
     let b:match_ignorecase = 1
   " }
 
@@ -161,19 +166,6 @@
     " Make it so AutoCloseTag works for xml and xhtml files as well
     au FileType xhtml,xml ru ftplugin/html/autoclosetag.vim
     nmap <Leader>ac <Plug>ToggleAutoCloseMappings
-  " }
-
-  " NerdTree {
-    map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-    map <leader>e :NERDTreeFind<CR>
-    nmap <leader>nt :NERDTreeFind<CR>
-
-    let NERDTreeShowBookmarks=1
-    let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-    let g:NERDTreeChDirMode=0
-    let NERDTreeQuitOnOpen=1
-    let NERDTreeShowHidden=1
-    let NERDTreeKeepTreeInNewTab=1
   " }
 
   " Tabularize {
@@ -248,11 +240,11 @@
     let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets'
 
     " AutoComplPop like behavior.
-    let g:neocomplcache_enable_auto_select = 1
+    "let g:neocomplcache_enable_auto_select = 1
 
     " SuperTab like snippets behavior.
-    imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-    smap  <tab>  <right><plug>(neocomplcache_snippets_jump) 
+    "imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
+    "smap  <tab>  <right><plug>(neocomplcache_snippets_jump) 
 
     " Plugin key-mappings.
     " Ctrl-k expands snippet & moves to next position
@@ -265,16 +257,16 @@
 
     " <CR>: close popup
     " <s-CR>: close popup and save indent.
-    inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-    inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+    "inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
+    "inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 
     " <TAB>: completion.
     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
     inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
 
     " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-    inoremap <expr><C-y>  neocomplcache#close_popup()
+    "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+    "inoremap <expr><C-y>  neocomplcache#close_popup()
 
     " Make splits a bit more managable.
     nnoremap <leader>1 :vs<CR><C-w>l
@@ -336,7 +328,6 @@
     map <Leader>s :call RunNearestSpec()<CR>
     map <Leader>l :call RunLastSpec()<CR>
     map <Leader>a :call RunAllSpecs()<CR>
-  " }
 " }
 
 
@@ -373,19 +364,6 @@ function! InitializeDirectories()
 endfunction
 call InitializeDirectories()
 
-function! NERDTreeInitAsNeeded()
-  redir => bufoutput
-  buffers!
-  redir END
-  let idx = stridx(bufoutput, "NERD_tree")
-  if idx > -1
-    NERDTreeMirror
-    NERDTreeFind
-    wincmd l
-  endif
-endfunction
-" }
-
 " Ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
@@ -415,6 +393,14 @@ endif
 " Ack.vim like searching
 nnoremap <space>f :Unite grep:.<cr>
 let g:agprg="/usr/local/bin/ag --column"
+
+if &term =~ '^256color'
+  " http://snk.tuxfamily.org/log/vim-256color-bce.html
+  execute "set <xUp>=\e[1;*A"
+  execute "set <xDown>=\e[1;*B"
+  execute "set <xRight>=\e[1;*C"
+  execute "set <xLeft>=\e[1;*D"
+endif
 
 " And finally. Make it pretty.
 set ttyfast

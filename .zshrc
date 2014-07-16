@@ -38,6 +38,8 @@ plugins=(git ruby rails)
 
 source $ZSH/oh-my-zsh.sh
 
+export TERM='xterm-256color'
+
 # Customize to your needs...
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH"
 eval "$(rbenv init -)"
