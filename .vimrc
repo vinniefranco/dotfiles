@@ -126,6 +126,7 @@
 
   " Open the file explorer
   nmap <silent> <leader>e :e.<CR>
+  nmap <silent> <C-e> :e.<CR>
 
   " Break comma delimited strings to newline at cursor
   nmap <silent> <leader>br :s/, /\=",\r " . substitute(substitute(getline('.'), " :.*$", "", "g"), ".", " ", "g")/g<CR>
