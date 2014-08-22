@@ -64,9 +64,6 @@
   " Remove trailing whitespaces and ^M chars
   autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
   autocmd BufNewFile,BufRead *.jst.ejs set filetype=html
- 
-  " Special definitions
-  autocmd FileType html setlocal shiftwidth=4 tabstop=4 noexpandtab
 
   set notimeout      " timeout on mappings and key bindings"
   set ttimeout       " timeout on mappings"
@@ -124,12 +121,21 @@
   " Quickly turn a string back to = into an array
   nmap <silent> <leader>ta vF=l<Esc>:s/\%V\S\+/"&",/g<CR>A<BS><Esc>vF=2lgS[JJ:let @/ = ""<CR>
 
-  " Open the file explorer
-  nmap <silent> <leader>e :e.<CR>
-  nmap <silent> <C-e> :e.<CR>
-
   " Break comma delimited strings to newline at cursor
   nmap <silent> <leader>br :s/, /\=",\r " . substitute(substitute(getline('.'), " :.*$", "", "g"), ".", " ", "g")/g<CR>
+
+  " NerdTree {
+    map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+    map <leader>e :NERDTreeFind<CR>
+    nmap <leader>nt :NERDTreeFind<CR>
+
+    let NERDTreeShowBookmarks=1
+    let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+    let g:NERDTreeChDirMode=0
+    let NERDTreeQuitOnOpen=1
+    let NERDTreeShowHidden=1
+    let NERDTreeKeepTreeInNewTab=1
+  " }
 
   " clearing highlighted search
   nmap <silent> <leader>/ :nohlsearch<CR>
@@ -310,11 +316,7 @@
  " }
 
  " Show 80th column.
-   if exists('+colorcolumn')
-     set colorcolumn=80
-   else
-     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-   endif
+   set colorcolumn=80
 
   " Airline {
     let g:syntastic_ignore_files=['\.html$', '\c\.h$', '\.css$']
@@ -324,7 +326,7 @@
   " }
 
   " vim-rspec Mappings {
-    let g:rspec_command = "Dispatch spring rspec -I . {spec}"
+    let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
     map <Leader>t :call RunCurrentSpecFile()<CR>
     map <Leader>s :call RunNearestSpec()<CR>
     map <Leader>l :call RunLastSpec()<CR>
@@ -383,17 +385,22 @@ let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable=1
 let g:unite_source_file_rec_max_cache_files=5000
 let g:unite_prompt='» '
-if executable('ag')
-  set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
-  set grepformat=%f:%l:%c:%m
-  let g:unite_source_grep_command='ag'
-  let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
-  let g:unite_source_grep_recursive_opt=''
-endif
+set grepprg=git\ grep\ -n\ $*
+nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+nmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
+vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
+"if executable('ag')
+  "set grepprg=ag\ --nogroup\ --column\ --smart-case\ --nocolor\ --follow
+  "set grepformat=%f:%l:%c:%m
+  "let g:unite_source_grep_command='ag'
+  "let g:unite_source_grep_default_opts='--nocolor --nogroup --hidden'
+  "let g:unite_source_grep_recursive_opt=''
+"endif
 
 " Ack.vim like searching
-nnoremap <space>f :Unite grep:.<cr>
-let g:agprg="/usr/local/bin/ag --column"
+" nnoremap <space>f :Unite grep:.<cr>
+" let g:agprg="/usr/local/bin/ag --column"
 
 if &term =~ '^256color'
   " http://snk.tuxfamily.org/log/vim-256color-bce.html
