@@ -12,6 +12,7 @@
 " }
 
 " General {
+  set spell spelllang=en_us
   set background=dark         " Assume a dark background
   filetype plugin indent on   " Automatically detect file types.
   syntax on                   " syntax highlighting
@@ -418,3 +419,7 @@ let g:seoul256_background = 234
 colorscheme Tomorrow-Night
 set guifont=Envy\ Code\ R\ for\ Powerline:h12
 let g:ctrlp_working_path=0
+
+hi clear SpellBad
+hi SpellBad cterm=underline
+let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
