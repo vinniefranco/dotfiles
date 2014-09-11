@@ -322,7 +322,19 @@
   " Airline {
     let g:syntastic_ignore_files=['\.html$', '\c\.h$', '\.css$']
     let g:airline_powerline_fonts=1
+
+    if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+    endif
+
     let g:airline#extensions#tabline#fnamecollapse=1
+    let g:airline_left_sep = '⮀'
+    let g:airline_left_alt_sep = '⮁'
+    let g:airline_right_sep = '⮂'
+    let g:airline_right_alt_sep = '⮃'
+    let g:airline_symbols.branch = '⭠'
+    let g:airline_symbols.readonly = '⭤'
+    let g:airline_symbols.linenr = '⭡'
     set laststatus=2
   " }
 
@@ -424,3 +436,4 @@ hi clear SpellBad
 hi clear SpellRare
 hi SpellBad cterm=underline
 let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
+
