@@ -40,6 +40,7 @@
       Bundle "tpope/vim-fugitive"
       Bundle "scrooloose/nerdcommenter"
       Bundle "godlygeek/tabular"
+      Bundle "rizzatti/dash.vim"
 
     " Javascript
       Bundle "leshill/vim-json"

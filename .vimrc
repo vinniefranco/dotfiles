@@ -417,9 +417,10 @@ set t_Co=256
 set background=dark
 let g:seoul256_background = 234
 colorscheme Tomorrow-Night
-set guifont=Envy\ Code\ R\ for\ Powerline:h12
+set guifont=Inconsolata-gz\ for\ Powerline:h12
 let g:ctrlp_working_path=0
 
 hi clear SpellBad
+hi clear SpellRare
 hi SpellBad cterm=underline
 let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
