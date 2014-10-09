@@ -13,7 +13,6 @@
 
 " General {
   set spell spelllang=en_us
-  set background=dark         " Assume a dark background
   filetype plugin indent on   " Automatically detect file types.
   syntax on                   " syntax highlighting
   set mouse=a                 " automatically enable mouse usage
@@ -322,19 +321,7 @@
   " Airline {
     let g:syntastic_ignore_files=['\.html$', '\c\.h$', '\.css$']
     let g:airline_powerline_fonts=1
-
-    if !exists('g:airline_symbols')
-      let g:airline_symbols = {}
-    endif
-
     let g:airline#extensions#tabline#fnamecollapse=1
-    let g:airline_left_sep = '⮀'
-    let g:airline_left_alt_sep = '⮁'
-    let g:airline_right_sep = '⮂'
-    let g:airline_right_alt_sep = '⮃'
-    let g:airline_symbols.branch = '⭠'
-    let g:airline_symbols.readonly = '⭤'
-    let g:airline_symbols.linenr = '⭡'
     set laststatus=2
   " }
 
@@ -426,9 +413,9 @@ endif
 " And finally. Make it pretty.
 set ttyfast
 set t_Co=256
+let base16colorspace=256
 set background=dark
-let g:seoul256_background = 234
-colorscheme Tomorrow-Night
+colorscheme base16-eighties
 set guifont=Inconsolata-gz\ for\ Powerline:h12
 let g:ctrlp_working_path=0
 

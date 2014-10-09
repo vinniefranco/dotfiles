@@ -71,4 +71,6 @@
       Bundle "mattn/emmet-vim"
       Bundle "rking/ag.vim"
       Bundle "inside/vim-grep-operator"
+      Plugin 'chriskempson/base16-vim'
+
 " }
