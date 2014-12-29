@@ -54,8 +54,9 @@
       Bundle "tpope/vim-rake"
       Bundle "tpope/vim-rails"
       Bundle "tpope/vim-endwise"
-      Bundle "thoughtbot/vim-rspec"
+      Bundle "gabebw/vim-spec-runner"
       Bundle "jgdavey/tslime.vim"
+      Bundle "ngmy/vim-rubocop"
       Bundle "slim-template/vim-slim.git"
       let g:rubycomplete_buffer_loading = 1
 
@@ -72,5 +73,6 @@
       Bundle "rking/ag.vim"
       Bundle "inside/vim-grep-operator"
       Plugin 'chriskempson/base16-vim'
+      Bundle "jeetsukumaran/vim-filebeagle"
 
 " }

@@ -48,11 +48,10 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 
 # Customize to your needs...
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:/usr/local/share/npm/bin:/usr/local/sbin:$PATH"
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 export C_INCLUDE_PATH=/usr/local/CrossPack-AVR/include:$C_INCLUDE_PATH
 export MANPATH=/usr/local/CrossPack-AVR/man:/usr/local/man:/opt/local/man:/sw/man:/usr/share/man:$MANPATH
-ANDROID_HOME=/usr/local/opt/android-sdk
 # @see http://vim.1045645.n5.nabble.com/MacVim-and-PATH-tt3388705.html#a3392363
 # Ensure MacVim has same shell as Terminal
 if [[ -a /etc/zshenv ]]; then

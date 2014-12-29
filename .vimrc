@@ -41,7 +41,6 @@
   set showmatch                   " show matching brackets/parenthesis
   set hlsearch                    " highlight search terms
   set winminheight=0              " windows can be 0 line high
-  set ignorecase                  " case insensitive search
   set smartcase                   " case sensitive when uc present
   set wildmenu                    " show list instead of just completing
   set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
@@ -113,10 +112,11 @@
   nnoremap Y y$
 
   " http://vim.wikia.com/wiki/Mac_OS_X_clipboard_sharing
-  nmap <F1> :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-  imap <F1> <Esc>:set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
-  nmap <F2> :.w !pbcopy<CR><CR>
-  vmap <F2> :w !pbcopy<CR><CR>
+  nmap <F1> :set paste<CR>
+  nmap <F2> :set nopaste<CR>
+
+  " Replace all occurrences of word under cursor
+  :nnoremap <Leader>r :%s/\<<C-r><C-w>\>/
 
   " Quickly turn a string back to = into an array
   nmap <silent> <leader>ta vF=l<Esc>:s/\%V\S\+/"&",/g<CR>A<BS><Esc>vF=2lgS[JJ:let @/ = ""<CR>
@@ -246,12 +246,6 @@
     let g:neocomplcache_force_overwrite_completefunc = 1
     let g:neocomplcache_snippets_dir='~/.vim/bundle/snipmate-snippets/snippets'
 
-    " AutoComplPop like behavior.
-    "let g:neocomplcache_enable_auto_select = 1
-
-    " SuperTab like snippets behavior.
-    "imap  <silent><expr><tab>  neocomplcache#sources#snippets_complete#expandable() ? "\<plug>(neocomplcache_snippets_expand)" : (pumvisible() ? "\<c-e>" : "\<tab>")
-    "smap  <tab>  <right><plug>(neocomplcache_snippets_jump) 
 
     " Plugin key-mappings.
     " Ctrl-k expands snippet & moves to next position
@@ -262,18 +256,9 @@
     inoremap <expr><C-l>   neocomplcache#complete_common_string()
     inoremap <expr><CR>    neocomplcache#complete_common_string()
 
-    " <CR>: close popup
-    " <s-CR>: close popup and save indent.
-    "inoremap <expr><s-CR> pumvisible() ? neocomplcache#close_popup()"\<CR>" : "\<CR>"
-    "inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "\<CR>"
-
     " <TAB>: completion.
     inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
     inoremap <expr><s-TAB>  pumvisible() ? "\<C-p>" : "\<TAB>"
-
-    " <C-h>, <BS>: close popup and delete backword char.
-    "inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-    "inoremap <expr><C-y>  neocomplcache#close_popup()
 
     " Make splits a bit more managable.
     nnoremap <leader>1 :vs<CR><C-w>l
@@ -315,6 +300,10 @@
    nnoremap <c-u> :UndotreeToggle<CR>
  " }
 
+ " Rubocop {
+   let g:vimrubocop_config = '~/.rubocop.yml'
+ " }
+ 
  " Show 80th column.
    set colorcolumn=80
 
@@ -326,11 +315,11 @@
   " }
 
   " vim-rspec Mappings {
-    let g:rspec_command = "Dispatch bundle exec spring rspec {spec}"
-    map <Leader>t :call RunCurrentSpecFile()<CR>
-    map <Leader>s :call RunNearestSpec()<CR>
-    map <Leader>l :call RunLastSpec()<CR>
-    map <Leader>a :call RunAllSpecs()<CR>
+    "let g:rspec_command = 'Dispatch bundle exec spring rspec {spec}' map <Leader>t <plug>RunCurrentSpecFile
+    let g:spec_runner_dispatcher = 'Dispatch {command}'
+    map <Leader>t <plug>RunCurrentSpecFile
+    map <Leader>s <plug>RunFocusedSpec
+    map <Leader>l <plug>RunMostRecentSpec
 " }
 
 
