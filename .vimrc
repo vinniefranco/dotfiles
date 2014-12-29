@@ -63,6 +63,7 @@
   " Remove trailing whitespaces and ^M chars
   autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
   autocmd BufNewFile,BufRead *.jst.ejs set filetype=html
+  au BufRead,BufNewFile *.json set filetype=json " Read json files as JS so syntastic can autolint it
 
   set notimeout      " timeout on mappings and key bindings"
   set ttimeout       " timeout on mappings"

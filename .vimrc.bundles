@@ -50,6 +50,9 @@
     " HTML
       Bundle "ChrisYip/Better-CSS-Syntax-for-Vim"
 
+    " CSS/SASS
+      Bundle 'cakebaker/scss-syntax.vim'
+
     " Ruby
       Bundle "tpope/vim-rake"
       Bundle "tpope/vim-rails"
