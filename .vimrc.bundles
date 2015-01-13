@@ -1,83 +1,59 @@
-" Environment {
-    " Basics {
-        set nocompatible        " must be first line
-    " }
-    "
-    " Setup Bundle Support {
-    " The next three lines ensure that the ~/.vim/bundle/ system works
-        filetype off
-        set rtp+=~/.vim/bundle/Vundle.vim
-        call vundle#begin()
-    " }
+set nocompatible
 
-" }
+" Vundle setup
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" Bundles {
-    " Deps
-        Bundle "gmarik/vundle"
-        Bundle "scrooloose/nerdtree"
-        Bundle "MarcWeber/vim-addon-mw-utils"
-        Bundle "tomtom/tlib_vim"
-    " }
+Bundle "gmarik/vundle"
 
-    " General
-      Bundle "tpope/vim-surround"
-      Bundle "AutoClose"
-      Bundle "unite.vim"
-      Bundle "edkolev/tmuxline.vim"
-      Bundle "matchit.zip"
-      Bundle "Lokaltog/vim-easymotion"
-      Bundle "flazz/vim-colorschemes"
-      Bundle "corntrace/bufexplorer"
-      Bundle "myusuf3/numbers.vim"
-      Bundle "ctrlp.vim"
-      Bundle "tpope/vim-dispatch"
-      Bundle 'christoomey/vim-tmux-navigator'
-      Bundle 'AndrewRadev/splitjoin.vim'
+" Navigation type plugins
+Bundle "ctrlp.vim"
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'jlanzarotta/bufexplorer'
+Bundle "tpope/vim-dispatch"
 
-    " General Programming
-      Bundle "scrooloose/syntastic"
-      Bundle "tpope/vim-fugitive"
-      Bundle "scrooloose/nerdcommenter"
-      Bundle "godlygeek/tabular"
-      Bundle "rizzatti/dash.vim"
+" Eye candy
+Bundle 'chriskempson/base16-vim'
+Bundle "bling/vim-airline"
+Bundle "edkolev/tmuxline.vim"
+Bundle "flazz/vim-colorschemes"
 
-    " Javascript
-      Bundle "leshill/vim-json"
-      Bundle "groenewege/vim-less"
-      Bundle "taxilian/vim-web-indent"
+" Motion type plugins
+Bundle "Lokaltog/vim-easymotion"
+Bundle "tpope/vim-surround"
+Bundle "godlygeek/tabular"
 
-    " HTML
-      Bundle "ChrisYip/Better-CSS-Syntax-for-Vim"
+Bundle "matchit.zip"
+Bundle "tpope/vim-fugitive"
+Bundle 'AndrewRadev/splitjoin.vim'
+Bundle "scrooloose/nerdcommenter"
 
-    " CSS/SASS
-      Bundle 'cakebaker/scss-syntax.vim'
+Bundle "scrooloose/syntastic"
+Bundle "leshill/vim-json"
+Plugin 'JulesWang/css.vim'
+Bundle 'cakebaker/scss-syntax.vim'
 
-    " Ruby
-      Bundle "tpope/vim-rake"
-      Bundle "tpope/vim-rails"
-      Bundle "tpope/vim-endwise"
-      Bundle "gabebw/vim-spec-runner"
-      Bundle "jgdavey/tslime.vim"
-      Bundle "ngmy/vim-rubocop"
-      Bundle "slim-template/vim-slim.git"
-      let g:rubycomplete_buffer_loading = 1
+Bundle "tpope/vim-rake"
+Bundle "tpope/vim-projectionist"
+Bundle "tpope/vim-rails"
+Bundle "tpope/vim-endwise"
+Bundle "gabebw/vim-spec-runner"
+Bundle "jgdavey/tslime.vim"
+Bundle "ngmy/vim-rubocop"
+Bundle "slim-template/vim-slim.git"
+Bundle "Shougo/unite.vim"
 
-    " Misc
-      Bundle "bling/vim-airline"
-      Bundle "EasyGrep"
-      Bundle "tpope/vim-markdown"
-      Bundle "Puppet-Syntax-Highlighting"
-      Bundle "c.vim"
-      Bundle "kchmck/vim-coffee-script"
-      Bundle "jade.vim"
-      Bundle "UltiSnips"
-      Bundle "mattn/emmet-vim"
-      Bundle "rking/ag.vim"
-      Bundle "inside/vim-grep-operator"
-      Bundle 'chriskempson/base16-vim'
-      Bundle "jeetsukumaran/vim-filebeagle"
+Bundle "rking/ag.vim"
+Bundle "EasyGrep"
+Bundle "inside/vim-grep-operator"
+Bundle "tpope/vim-markdown"
+Bundle "Puppet-Syntax-Highlighting"
+Bundle "c.vim"
+Bundle "kchmck/vim-coffee-script"
+Bundle "jade.vim"
+Bundle "UltiSnips"
+Bundle "mattn/emmet-vim"
 
-    call vundle#end()            " required 
-    filetype plugin indent on    " required
-" }
+call vundle#end()            " required 
+filetype plugin indent on    " required
