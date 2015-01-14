@@ -25,6 +25,7 @@ if has('persistent_undo')
 endif
 
 set showmode                    " display the current mode
+set mouse=a
 set colorcolumn=80
 set cursorline                  " highlight current line
 set backspace=indent,eol,start  " backspace for dummies
@@ -137,11 +138,8 @@ nnoremap <silent> <leader>gl :Glog<CR>
 nnoremap <silent> <leader>gp :Git push<CR>
 
 " <TAB>: completion.
-inoremap <expr> <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
-inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
-inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+inoremap <expr> <TAB>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <s-TAB>       pumvisible() ? "\<C-p>" : "\<Up>"
 
 " Make splits a bit more manageable.
 nnoremap <leader>1 :vs<CR><C-w>l
@@ -164,6 +162,11 @@ let g:spec_runner_dispatcher = 'Dispatch {command}'
 map <Leader>t <plug>RunCurrentSpecFile
 map <Leader>s <plug>RunFocusedSpec
 map <Leader>l <plug>RunMostRecentSpec
+
+nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+nmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
+vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
 
 function! InitializeDirectories()
   let separator = "."
