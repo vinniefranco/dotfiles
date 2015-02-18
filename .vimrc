@@ -158,15 +158,22 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#fnamecollapse=1
 set laststatus=2
 
-let g:spec_runner_dispatcher = 'Dispatch {command}'
-map <Leader>t <plug>RunCurrentSpecFile
-map <Leader>s <plug>RunFocusedSpec
-map <Leader>l <plug>RunMostRecentSpec
+let g:spec_runner_dispatcher = 'call VtrSendCommand("be {command}")'
+map <leader>t <plug>RunCurrentSpecFile
+map <leader>s <plug>RunFocusedSpec
+map <leader>l <plug>RunMostRecentSpec
 
-nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
-vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
-nmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
-vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
+" VtrRunner
+nmap <leader>p :VtrKillRunner<CR>
+nmap <leader>o :VtrOpenRunner({'percentage': 20})<CR>
+
+" Reload config
+nmap <leader>R :source $MYVIMRC<CR>
+
+nmap <leader>g <plug>grepoperatoroncurrentdirectory
+vmap <leader>g <plug>grepoperatoroncurrentdirectory
+nmap <leader><leader>g <plug>GrepOperatorWithFilenamePrompt
+vmap <leader><leader>g <plug>GrepOperatorWithFilenamePrompt
 
 function! InitializeDirectories()
   let separator = "."
@@ -219,6 +226,8 @@ let g:unite_source_history_yank_enable=1
 let g:unite_source_file_rec_max_cache_files=5000
 let g:unite_prompt='» '
 
+let g:netrw_liststyle=3
+
 set grepprg=git\ grep\ -n\ $*
 
 if executable('ag')
@@ -240,12 +249,14 @@ if &term =~ '^256color'
   execute "set <xLeft>=\e[1;*D"
 endif
 
+map <C-e> :NERDTreeToggle<CR>
+
 " And finally. Make it pretty.
 set ttyfast
 set t_Co=256
 let base16colorspace=256
 set background=dark
-colorscheme base16-eighties
+colorscheme base16-tomorrow
 
 set guifont=Inconsolata-gz\ for\ Powerline:h12
 

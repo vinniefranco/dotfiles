@@ -1,59 +1,60 @@
 set nocompatible
 
-" Vundle setup
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Bundle "gmarik/vundle"
+Plugin 'gmarik/vundle'
 
-" Navigation type plugins
-Bundle "ctrlp.vim"
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'jlanzarotta/bufexplorer'
-Bundle "tpope/vim-dispatch"
+Plugin 'ctrlp.vim'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-vinegar'
+Plugin 'scrooloose/nerdtree'
 
-" Eye candy
-Bundle 'chriskempson/base16-vim'
-Bundle "bling/vim-airline"
-Bundle "edkolev/tmuxline.vim"
-Bundle "flazz/vim-colorschemes"
+Plugin 'chriskempson/base16-vim'
+Plugin 'bling/vim-airline'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'flazz/vim-colorschemes'
 
-" Motion type plugins
-Bundle "Lokaltog/vim-easymotion"
-Bundle "tpope/vim-surround"
-Bundle "godlygeek/tabular"
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-surround'
+Plugin 'Raimondi/delimitMate'
+Plugin 'godlygeek/tabular'
 
-Bundle "matchit.zip"
-Bundle "tpope/vim-fugitive"
-Bundle 'AndrewRadev/splitjoin.vim'
-Bundle "scrooloose/nerdcommenter"
+Plugin 'matchit.zip'
+Plugin 'tpope/vim-fugitive'
+Plugin 'AndrewRadev/splitjoin.vim'
+Plugin 'scrooloose/nerdcommenter'
 
-Bundle "scrooloose/syntastic"
-Bundle "leshill/vim-json"
+Plugin 'scrooloose/syntastic'
+Plugin 'leshill/vim-json'
 Plugin 'JulesWang/css.vim'
-Bundle 'cakebaker/scss-syntax.vim'
+Plugin 'cakebaker/scss-syntax.vim'
 
-Bundle "tpope/vim-rake"
-Bundle "tpope/vim-projectionist"
-Bundle "tpope/vim-rails"
-Bundle "tpope/vim-endwise"
-Bundle "gabebw/vim-spec-runner"
-Bundle "jgdavey/tslime.vim"
-Bundle "ngmy/vim-rubocop"
-Bundle "slim-template/vim-slim.git"
-Bundle "Shougo/unite.vim"
+Plugin 'tpope/vim-rake'
+Plugin 'tpope/vim-projectionist'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-endwise'
+Plugin 'thoughtbot/vim-rspec'
+Plugin 'gabebw/vim-spec-runner'
+Plugin 'christoomey/vim-tmux-runner'
+Plugin 'ngmy/vim-rubocop'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'Shougo/unite.vim'
 
-Bundle "rking/ag.vim"
-Bundle "EasyGrep"
-Bundle "inside/vim-grep-operator"
-Bundle "tpope/vim-markdown"
-Bundle "Puppet-Syntax-Highlighting"
-Bundle "c.vim"
-Bundle "kchmck/vim-coffee-script"
-Bundle "jade.vim"
-Bundle "UltiSnips"
-Bundle "mattn/emmet-vim"
+Plugin 'rking/ag.vim'
+Plugin 'EasyGrep'
+Plugin 'inside/vim-grep-operator'
+Plugin 'tpope/vim-markdown'
+Plugin 'Puppet-Syntax-Highlighting'
+Plugin 'c.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'jade.vim'
+Plugin 'UltiSnips'
+Plugin 'mattn/emmet-vim'
+Bundle 'shime/vim-livedown'
 
-call vundle#end()            " required 
-filetype plugin indent on    " required
+call vundle#end()
+filetype plugin indent on
