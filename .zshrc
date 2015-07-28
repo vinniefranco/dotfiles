@@ -8,9 +8,9 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="miloshadzic"
 
 # Example aliases
-alias v="mvim -v"
 alias js="rhino"
 alias be='bundle exec'
+alias vim="nvim"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
@@ -39,11 +39,11 @@ plugins=(git ruby rails)
 source $ZSH/oh-my-zsh.sh
 
 export TERM='xterm-256color'
-
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
 # Base16 Shell
-BASE16_SCHEME="tomorrow"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
-[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+BASE16_SCHEME="atelierlakeside"
+#BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+#[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
 
 # Customize to your needs...

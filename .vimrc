@@ -47,8 +47,9 @@ set nowrap                                    " wrap long lines
 set autoindent                                " indent at the same level of the previous line
 set expandtab                                 " tabs are spaces, not tabs
 set pastetoggle=<F12>                         " pastetoggle (sane indentation on pastes)
-set listchars=tab:``,trail:`,extends:#,nbsp:` " Highlight problematic whitespace"
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:_,extends:❯,precedes:❮
 set shiftwidth=2                              " use indents of 2 spaces"
+set synmaxcol=1200
 set tabstop=2                                 " an indentation every 2 columns"
 set softtabstop=2                             " let backspace delete indent"
 " Remove trailing whitespaces and ^M chars
@@ -60,6 +61,10 @@ set notimeout      " timeout on mappings and key bindings"
 set ttimeout       " timeout on mappings"
 set timeoutlen=50
 
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 let mapleader = ','
 
 " search buffer for word under cursor
@@ -159,13 +164,14 @@ let g:airline#extensions#tabline#fnamecollapse=1
 set laststatus=2
 
 let g:spec_runner_dispatcher = 'call VtrSendCommand("be {command}")'
+let g:VtrClearSequence = "clear"
 map <leader>t <plug>RunCurrentSpecFile
 map <leader>s <plug>RunFocusedSpec
 map <leader>l <plug>RunMostRecentSpec
 
 " VtrRunner
 nmap <leader>p :VtrKillRunner<CR>
-nmap <leader>o :VtrOpenRunner({'percentage': 20})<CR>
+nmap <leader>o :VtrOpenRunner({'orientation': 'h', 'percentage': 30})<CR>
 
 " Reload config
 nmap <leader>R :source $MYVIMRC<CR>
@@ -251,16 +257,18 @@ endif
 
 map <C-e> :NERDTreeToggle<CR>
 
+nmap <leader>vr :so $MYVIMRC<CR>
+
 " And finally. Make it pretty.
 set ttyfast
 set t_Co=256
 let base16colorspace=256
 set background=dark
-colorscheme base16-tomorrow
+colorscheme base16-atelierlakeside
 
 set guifont=Inconsolata-gz\ for\ Powerline:h12
 
 hi clear SpellBad
 hi clear SpellRare
-hi SpellBad cterm=underline
+hi SpellBad ctermbg=none ctermfg=none cterm=underline
 let g:spellfile_URL = 'http://ftp.vim.org/vim/runtime/spell'
