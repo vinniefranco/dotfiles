@@ -214,6 +214,9 @@ set background=dark
 colorscheme base16-atelierlakeside
 set guifont=Fira\ Code\ for\ Powerline:h12
 
+set spell
+set spelllang=en_us
+
 hi SpellBad    guisp=#FF0000 gui=undercurl
 hi SpellCap    guisp=#7070F0 gui=undercurl
 hi SpellLocal  guisp=#70F0F0 gui=undercurl
